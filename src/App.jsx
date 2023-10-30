@@ -1,11 +1,11 @@
 import "./App.css";
 
-import { FORM1 } from "./form/FORM1.JSX";
+import { FORM2 } from "./form/FORM2";
 
 function App() {
   return (
     <>
-      <FORM1 />
+      <FORM2 />
     </>
   );
 }
