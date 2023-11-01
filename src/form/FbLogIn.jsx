@@ -1,6 +1,31 @@
+// eslint-disable-next-line no-unused-vars
+import React, { useState } from "react";
 import { FaXmark } from "react-icons/fa6";
 
 function FaceBook() {
+  const [user, setUser] = useState({
+    firstName: "",
+    surName: "",
+    emailNumber: "",
+    password: "",
+    day: "",
+    month: "",
+    year: "",
+  });
+  const { firstName, surName, email, number, password, day, month, year } =
+    user;
+
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    console.log("Form is submitted");
+
+    console.log(user);
+    e.preventDefault();
+  };
+
   return (
     <div className="signUp">
       <button className="removeButton">
@@ -12,7 +37,7 @@ function FaceBook() {
       </div>
       {/* sign up end **form start */}
       <hr />
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <div>
           <input
             className="inputName"
@@ -20,6 +45,8 @@ function FaceBook() {
             name="firstName"
             id="firstName"
             placeholder="First Name"
+            value={firstName}
+            onChange={handleChange}
             required
           />
           <input
@@ -28,6 +55,8 @@ function FaceBook() {
             name="surName"
             id="surName"
             placeholder="Surname"
+            value={surName}
+            onChange={handleChange}
             required
           />
         </div>
@@ -36,10 +65,12 @@ function FaceBook() {
         <div>
           <input
             className="largInput"
-            type="email,number"
+            type="email"
             name="emailNumber"
             id="emailNumber"
             placeholder="Mobile number or email address"
+            value={(email, number)}
+            onChange={handleChange}
             required
           />
         </div>
@@ -52,6 +83,8 @@ function FaceBook() {
             name="password"
             id="password"
             placeholder="New password"
+            value={password}
+            onChange={handleChange}
             required
           />
         </div>
@@ -65,19 +98,37 @@ function FaceBook() {
         </div>
 
         <div>
-          <select className="dateOfBirth" name="day" id="day">
+          <select
+            className="dateOfBirth"
+            name="day"
+            id="day"
+            value={day}
+            onChange={handleChange}
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
           </select>
-          <select className="dateOfBirth" name="month" id="month">
+          <select
+            className="dateOfBirth"
+            name="month"
+            id="month"
+            onChange={handleChange}
+            value={month}
+          >
             <option value="Januarry">Januarry</option>
             <option value="Februarry">Februarry</option>
             <option value="March">March</option>
             <option value="April">April</option>
           </select>
-          <select className="dateOfBirth" name="year" id="year">
+          <select
+            className="dateOfBirth"
+            name="year"
+            id="year"
+            onChange={handleChange}
+            value={year}
+          >
             <option value="1992">1992</option>
             <option value="1993">1993</option>
             <option value="1994">1994</option>
@@ -93,26 +144,46 @@ function FaceBook() {
         </div>
         <div>
           <span className="gender" id="male">
-            <label className="malelable" htmlFor="">
+            <label className="malelable" id="maleid" htmlFor="inputMale">
               Male
             </label>
-            <input type="radio" value="Male" name="gender" />
+            <input
+              id="inputMale"
+              type="radio"
+              value="Male"
+              name="gender"
+              onChange={handleChange}
+            />
           </span>
           <span className="gender" id="female">
-            <label className="femalelable" htmlFor="">
+            <label className="femalelable" htmlFor="inputFemail">
               Female
             </label>
-            <input type="radio" value="female" name="gender" />
+            <input
+              id="inputFemail"
+              type="radio"
+              value="female"
+              name="gender"
+              onChange={handleChange}
+            />
           </span>
           <span className="gender" id="others">
-            <label className="otherslable" htmlFor="">
+            <label className="otherslable" htmlFor="otherId">
               Others
             </label>
-            <input type="radio" value="others" name="gender" />
+            <input
+              id="otherId"
+              type="radio"
+              value="others"
+              name="gender"
+              onChange={handleChange}
+            />
           </span>
         </div>
         {/* Gender end and sign up button start  */}
-        <button className="signupButton">Sign Up</button>
+        <button type="submit" className="signupButton">
+          Sign Up
+        </button>
       </form>
     </div>
   );
