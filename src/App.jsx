@@ -1,11 +1,11 @@
 import "./App.css";
-
-import { FORM2 } from "./form/FORM2";
+import FaceBook from "./form/FbLogIn";
+import "./form/fb.css";
 
 function App() {
   return (
     <>
-      <FORM2 />
+      <FaceBook />
     </>
   );
 }
